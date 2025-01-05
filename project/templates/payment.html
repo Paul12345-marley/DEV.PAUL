@@ -1,0 +1,23 @@
+{% extends "homepage.html" %}
+
+{% block title %}
+    Payment - IYA PAUL KITCHEN
+{% endblock %}
+
+{% block main %}
+<div class="payment-container">
+    <h1>Payment Information</h1>
+    <p>Please copy and make your payment to the details below:</p>
+
+    <!-- Your Payment Details -->
+    <div class="payment-details">
+        <p><strong>Account Name:</strong> PAUL SOSSA</p>
+        <p><strong>Account Number:</strong> 9073687793</p>
+        <p><strong>Bank:</strong> PALMPAY</p>
+        <p><strong>Total Cost:</strong> ₦{{ total_price }}</p>
+    </div>
+
+    <p>Once the Payment is made click below</p>
+    <a href="/success"><button type="submit" class="cta-button">DONE</button></a>
+</div>
+{% endblock %}

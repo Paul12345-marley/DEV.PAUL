@@ -1,0 +1,22 @@
+{% extends "homepage.html" %}
+
+{% block title %}
+    Location Confirmed - IYA PAUL KITCHEN
+{% endblock %}
+
+{% block main %}
+<div class="location-success">
+    <h1>Thank you for confirming your location!</h1>
+    <p>Your location is confirmed as Lagos, {{ lga }}.</p>
+    <p>Your address is: {{ address }}</p>
+    <p>Your phone number is: {{ phone_number }}</p>
+    <p>You can now proceed with ordering your plate!</p>
+    <div>
+        <a href="" class="btn btn-primary">EDIT</a>
+    </div>
+    <strong><p>or</p></strong>
+    <div class="paul">
+        <a class="cta-button" href="/payment">Make payment and Get Plate 🍽</a>
+    </div>
+</div>
+{% endblock %}

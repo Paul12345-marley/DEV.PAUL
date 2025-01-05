@@ -1,0 +1,8 @@
+flask
+gunicorn
+flask-sqlalchemy
+flask-wtf
+flask-login
+python-dotenv
+requests
+psycopg2-binary  # If using PostgreSQL

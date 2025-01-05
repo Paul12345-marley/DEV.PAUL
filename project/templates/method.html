@@ -1,0 +1,28 @@
+{% extends "homepage.html" %}
+
+{% block title %}
+    Payment Method
+{% endblock %}
+
+{% block main %}
+    <div class="doku">
+        <h2>Select Your Payment Method</h2>
+        <form method="POST" action="/payment">
+            <div>
+                <label>
+                    <input type="radio" name="payment_method" value="payment_on_delivery" required>
+                    Payment on Delivery
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="payment_method" value="payment_before_delivery" required>
+                    Payment Before Delivery
+                </label>
+            </div>
+            <div>
+                <button type="submit">Proceed</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

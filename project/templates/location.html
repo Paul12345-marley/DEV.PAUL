@@ -1,0 +1,119 @@
+{% extends "homepage.html" %}
+
+{% block title %}
+    Enter Your Location - IYA PAUL KITCHEN
+{% endblock %}
+
+{% block main %}
+<div class="location-page">
+    <h1><strong>Enter Your Location</strong></h1>
+
+    <form method="POST" action="/location" onsubmit="return validateAddress()">
+        <label for="country">Country</label>
+        <select id="country" name="country" required>
+            <option value="Nigeria" selected>Nigeria</option>
+        </select>
+
+        <label for="state">State</label>
+        <select id="state" name="state" required>
+            <option value="Lagos" selected>Lagos</option>
+        </select>
+
+        <label for="lga">Local Government Area (LGA)</label>
+        <select id="lga" name="lga" required>
+            <option value="" selected>Select one</option>
+            <option value="Shomolu">Shomolu</option>
+            <option value="Kosofe">Kosofe</option>
+        </select>
+
+        <div id="area-section" style="display: none;">
+            <label for="area">Area</label>
+            <select id="area" name="area" required>
+                <option value="" selected>Select an area</option>
+            </select>
+        </div>
+
+        <div id="address-section" style="display: none;">
+            <label for="address">Enter your full address</label>
+            <textarea id="address" name="address" required placeholder="Enter your street, house number, etc."></textarea>
+
+            <label for="phone">Phone Number</label>
+                <input
+                    type="number"
+                    id="phone"
+                    name="phone"
+                    required
+                    placeholder="0808 123 5363"
+                    pattern="\d{11}"
+                    title="The Phone Number must be an 11 digit number"
+                >
+                <span id="phone-error" style="color: red; display: none;">Invalid Nigerian phone number.</span>
+
+        </div>
+
+        <button type="submit" class="cta-button">Submit Location</button>
+    </form>
+</div>
+<script>
+    const lgaSelect = document.getElementById('lga');
+    const areaSection = document.getElementById('area-section');
+    const areaSelect = document.getElementById('area');
+    const addressSection = document.getElementById('address-section');
+    const addressInput = document.getElementById('address');
+
+    // Areas mapped to LGAs
+    const lgaAreas = {
+        Shomolu: ["Shomolu", "Bariga", "Pedro", "Akoka"],
+        Kosofe: ["Gbagada Phase 1", "Gbagada Phase 2", "Atunrase Estate", "Medina", "Ifako Gbagada"]
+    };
+
+    lgaSelect.addEventListener('change', function () {
+        const selectedLga = lgaSelect.value;
+
+        if (selectedLga && lgaAreas[selectedLga]) {
+            // Populate the area dropdown
+            areaSelect.innerHTML = '<option value="" selected>Select an area</option>';
+            lgaAreas[selectedLga].forEach(area => {
+                const option = document.createElement('option');
+                option.value = area;
+                option.textContent = area;
+                areaSelect.appendChild(option);
+            });
+
+            // Show the area section
+            areaSection.style.display = 'block';
+        } else {
+            // Hide the area and address sections if no valid LGA is selected
+            areaSection.style.display = 'none';
+            addressSection.style.display = 'none';
+        }
+    });
+
+    areaSelect.addEventListener('change', function () {
+        if (areaSelect.value) {
+            // Show the address section once an area is selected
+            addressSection.style.display = 'block';
+        } else {
+            // Hide the address section if no area is selected
+            addressSection.style.display = 'none';
+        }
+    });
+
+    // Function to validate the address
+    function validateAddress() {
+        const address = addressInput.value.trim();
+
+        // Regular expression to check for a number and a street name
+        const addressPattern = /\d+.*[A-Za-z]+/;
+
+        if (!addressPattern.test(address)) {
+            alert("Please include both a house number and a street name in the address.");
+            addressInput.focus();
+            return false; // Prevent form submission
+        }
+
+        return true; // Allow form submission
+    }
+</script>
+
+{% endblock %}

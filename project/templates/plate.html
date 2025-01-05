@@ -1,0 +1,35 @@
+{% extends "homepage.html" %}
+
+{% block title %}
+    Your Order - IYA PAUL KITCHEN
+{% endblock %}
+
+{% block main %}
+    <div class="order-summary">
+        <h1>Your Order Summary</h1>
+        <ul>
+            <!-- Display Rice Dishes -->
+            <h3>Rice Dishes</h3>
+            {% for item, quantity in order.items() %}
+                {% if item in ['jollof_rice', 'fried_rice', 'white_rice', 'beans', 'yam'] and quantity|int > 0 %}
+                    <li>{{ item.replace('_', ' ').capitalize() }}: ₦{{ quantity|int }}</li>
+                {% endif %}
+            {% endfor %}
+
+            <!-- Display Protein Options -->
+            <h3>Protein Options</h3>
+            {% for protein, price in protein_totals.items() %}
+                <li>{{ protein.replace('_qty', '').replace('_', ' ').capitalize()}} ({{ order[protein] }}):  ₦{{ price }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Total Price: ₦{{ total_price }}</h2>
+        <div class="change-order-button">
+            <a href="/menu">Change Order</a>
+        </div>
+        <div class="paul">
+            <a class="cta-button" href="/location">Get Plate 🍽</a>
+        </div>
+    </div>
+
+{% endblock %}

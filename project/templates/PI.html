@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Info - IYA PAUL KITCHEN</title>
+        <link href="/static/logo.jpg" rel="icon">
+        <link rel="stylesheet" href="/static/styles.css">
+    </head>
+
+    <body>
+        <header class="personal-info-header">
+            <img src="/static/logo.jpg" alt="Logo" class="logo">
+            <h1>Personal Info</h1>
+            <p>Manage your account details and view your transaction history.</p>
+        </header>
+
+        <main class="personal-info-container">
+            <!-- User Info Section -->
+            <section class="user-info">
+                <h2>Account Details</h2>
+                <p><strong>Username:</strong> <span id="username">{{ username }}</span></p>
+                <p><strong>Email:</strong> <span id="email">{{ email }}</span></p>
+                <button class="edit-button">Edit</button>
+            </section>
+
+            <!-- Update Form Section -->
+            <section class="update-form">
+                <h2>Update Your Info</h2>
+                <form method="POST" action="/contact">
+                    <label for="new-username">New Username:</label>
+                    <input type="text" id="new-username" name="new-username" placeholder="Enter new username">
+                    <button type="submit" class="update-button">Update Username</button>
+
+                    <label for="current-password">Current Password:</label>
+                    <input type="password" id="current-password" name="current-password" placeholder="Current password">
+
+                    <label for="new-password">New Password:</label>
+                    <input type="password" id="new-password" name="new-password" placeholder="New password">
+                    <label for="show-password" class="password-toggle">
+                        <input type="checkbox" id="show-password"> Show Password
+                    </label>
+                    <script>
+                        document.getElementById('show-password').addEventListener('change', function() {
+                            var passwordField = document.getElementById('current-password');
+                            var confirmationField = document.getElementById('new-password');
+                            if (this.checked) {
+                                passwordField.type = 'text';
+                                confirmationField.type = 'text';
+                            } else {
+                                passwordField.type = 'password';
+                                confirmationField.type = 'password';
+                            }
+                        });
+                    </script>
+
+                    <button type="submit" class="update-button">Update password</button>
+                </form>
+            </section>
+
+            <!-- Transaction History Section -->
+            <section class="transaction-history">
+                <h2>Transaction History</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ time }}</td>
+                            <td>{{ amount }}</td>
+                            <td>{{ order }}</td>
+                        </tr>
+                        <!-- Add more transactions as needed -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <footer class="personal-info-footer">
+            <p>&copy; 2024 IYA PAUL KITCHEN. All rights reserved.</p>
+        </footer>
+    </body>
+
+</html>

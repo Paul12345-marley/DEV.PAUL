@@ -1,0 +1,113 @@
+{% extends "homepage.html" %}
+
+{% block title %}
+    Menu - IYA PAUL KITCHEN
+{% endblock %}
+
+{% block main %}
+    <div class="menu-page">
+        <header class="menu-header">
+            <h1>IYA PAUL KITCHEN</h1>
+            <a href="/">Home</a>
+            <a href="/us">About Us</a>
+        </header>
+
+        <main class="menu-main">
+            <h2>Our Menu</h2>
+
+        <!-- Important Message -->
+            <div class="important-message">
+                <marquee>
+                    <p><strong>Note:</strong> Your total order must be at least ₦2000. Thank you for your understanding!</p>
+                </marquee>
+            </div>
+
+            <form id="menu-form" method="POST" action="/plate">
+                <div class="menu-category">
+                    <h3>Rice Dishes</h3>
+                    <h4 class="instruction">Please enter the amount you want (in Naira):</h4>
+                    <div class="menu-item">
+                        <img src="/static/jollofrice.jpg" alt="Jollof Rice">
+                        <h4>Jollof Rice</h4>
+                        <p>Rich and spicy Jollof Rice with a side of fried plantains.</p>
+                        <p class="b">from ₦500 above</p>
+                        <input class="menu-input" type="number" name="jollof_rice" placeholder="How much" min="500">
+                    </div>
+                    <div class="menu-item">
+                        <img src="/static/friedrice.jpg" alt="Fried Rice">
+                        <h4>Fried Rice</h4>
+                        <p>Delicious Fried Rice with mixed vegetables and spices.</p>
+                        <p class="b">from ₦300 above</p>
+                        <input class="menu-input" type="number" name="fried_rice" placeholder="How much" min="300">
+                    </div>
+                    <div class="menu-item">
+                        <img src="/static/white.jpg" alt="White Rice">
+                        <h4>White Rice and Stew</h4>
+                        <p>Steamed white rice, perfectly fluffy and served with your choice of sauce or stew.</p>
+                        <p class="b">from ₦500 above</p>
+                        <input class="menu-input" type="number" name="white_rice" placeholder="How much" min="500">
+                    </div>
+                    <div class="menu-item">
+                        <img src="/static/beans.jpg" alt="Beans">
+                        <h4>Beans</h4>
+                        <p>Perfectly cooked beans seasoned with spices, served with a touch of palm oil.</p>
+                        <p class="b">from ₦200 above</p>
+                        <input class="menu-input" type="number" name="beans" placeholder="How much" min="200">
+                    </div>
+                    <div class="menu-item">
+                        <img src="/static/yam.jpg" alt="Yam">
+                        <h4>Yam</h4>
+                        <p>Soft and fluffy yam slices served with a rich tomato and pepper sauce.</p>
+                        <p class="b">from ₦200 above</p>
+                        <input class="menu-input" type="number" name="yam" placeholder="How much" min="200">
+                    </div>
+                </div>
+
+            <!-- Protein Options Section -->
+                <div class="menu-category">
+                    <h3>Protein Options</h3>
+                    <h4 class="instruction">Please enter the how many you want (in quantity):</h4>
+                    <div class="menu-item">
+                        <img src="/static/egg.jpg" alt="Egg">
+                        <h4>Egg</h4>
+                        <p>A freshly cooked egg to complement your meal.</p>
+                        <p class="b">1 for ₦300</p>
+                        <input class="menu-input" type="number" name="egg_qty" placeholder="How many" data-price="300">
+                    </div>
+                    <div class="menu-item">
+                        <img src="/static/meat.jpg" alt="Meat">
+                        <h4>Meat</h4>
+                        <p>Juicy, tender beef or goat meat.</p>
+                        <p class="b">1 for ₦100</p>
+                        <input class="menu-input" type="number" name="meat_qty" placeholder="How many" data-price="100">
+                    </div>
+                    <div class="menu-item">
+                        <img src="/static/fish.jpg" alt="Fish">
+                        <h4>Fish</h4>
+                        <p>Grilled or fried fish served with your choice of dish.</p>
+                        <p class="b">1 for ₦500</p>
+                        <input class="menu-input" type="number" name="fish_qty" placeholder="How many" data-price="500">
+                    </div>
+                    <div class="menu-item">
+                        <img src="/static/ponmo.jpg" alt="Ponmo">
+                        <h4>Ponmo</h4>
+                        <p>Tender cow skin served with your choice of dish.</p>
+                        <p class="b">1 for ₦100</p>
+                        <input class="menu-input" type="number" name="ponmo_qty" placeholder="How many" data-price="100">
+                    </div>
+                </div>
+
+                <div class="paul">
+                    <button type="submit" class="cta-button">Order Plate</button>
+                </div>
+            </form>
+        </main>
+
+        <footer class="main-footer">
+            <p>&copy; 2024 IYA PAUL KITCHEN. All Rights Reserved.</p>
+            <div class="socials">
+                <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">Twitter</a>
+            </div>
+        </footer>
+    </div>
+{% endblock %}

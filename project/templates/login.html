@@ -1,0 +1,61 @@
+{% extends "homepage.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <div class="login-page">
+        <div class="login-container">
+            <div class="login-form-container">
+                <h2 class="login-title">Login to IYA PAUL KITCHEN AT HOME</h2>
+                <p class="login-intro">Welcome back! Please login to access your account.</p>
+                <form action="/login" method="post">
+                    <div class="form-group">
+                        <label for="username" class="login-label">Username/email:</label>
+                        <input type="text" id="username" name="username" class="login-input" autofocus="on" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="login-label">Password:</label>
+                        <input type="password" id="password" name="password" class="login-input" required>
+                    </div>
+                    <label for="show-password" class="login-show-password">
+                        <input type="checkbox" id="show-password"> Show Password
+                    </label>
+                    <button type="submit" class="login-btn">Login</button>
+                    <p class="login-footer">Don't have an account? <a href="/register" class="login-link">Sign up</a></p>
+                    <p class="login-footer">Forgot password? <a href="/forgot-password" class="login-link">Reset password</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('show-password').addEventListener('change', function() {
+            var passwordField = document.getElementById('password');
+            if (this.checked) {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        });
+        </script>
+    <script>
+        // Add event listener to form submission
+        form.addEventListener('submit', function(event) {
+            // Get the value of the input
+            let input = document.getElementById('username').value;
+
+            // Define patterns for username and email
+            let usernamePattern = /^[a-zA-Z0-9_]{3,}$/; // Example pattern for username
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Pattern for email
+
+            // Check if input matches either pattern
+            if (!usernamePattern.test(input) && !emailPattern.test(input)) {
+                // Prevent form submission
+                event.preventDefault();
+                // Display error message
+                alert('Please enter a valid username or email.');
+            }
+        });
+    </script>
+{% endblock %}

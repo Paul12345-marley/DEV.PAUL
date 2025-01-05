@@ -1,0 +1,28 @@
+{% extends "homepage.html" %}
+
+{% block title %}
+    Verification
+{% endblock %}
+
+{% block main %}
+    <div class="verification-page">
+        <div class="verification-container">
+            <h2 class="verification-title">Verify Your Account</h2>
+            <p class="verification-message">We sent a 4-digit code to your email address.</p>
+            <form action="/verify" method="post" class="verification-form">
+                <div class="form-group2">
+                    <label for="code" class="verification-label">Enter Verification Code:</label>
+                    <input type="number" id="code" name="code" class="verification-input" required>
+                </div>
+                <button type="submit" class="verification-button">Verify</button>
+            </form>
+            <p class="verification-footer">
+                Didn't receive the code? <a href="/resendcode" class="verification-link">Resend Code</a>
+            </p>
+            <p class="verification-footer">
+                Expired code? <a href="/resendcode" class="verification-link">Resend Code</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}
+

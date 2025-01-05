@@ -1,0 +1,48 @@
+{% extends "homepage.html" %}
+
+{% block title %}
+    Sign Up
+{% endblock %}
+
+{% block main %}
+    <div class="signup-page">
+        <div class="container1">
+            <h2 class="signup-title">Register</h2>
+            <form action="/register" method="POST" class="signup-form">
+                <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" name="username" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-input" minlength="8" required>
+                    <label for="confirmation" class="form-label">Confirm Password</label>
+                    <input type="password" id="confirmation" name="confirmation" class="form-input" required>
+                    <label for="show-password" class="password-toggle">
+                        <input type="checkbox" id="show-password"> Show Password
+                    </label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="signup-button">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('show-password').addEventListener('change', function() {
+            var passwordField = document.getElementById('password');
+            var confirmationField = document.getElementById('confirmation');
+            if (this.checked) {
+                passwordField.type = 'text';
+                confirmationField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+                confirmationField.type = 'password';
+            }
+        });
+        </script>
+{% endblock %}
